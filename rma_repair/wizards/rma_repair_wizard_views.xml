@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright NuoBiT - Frank Cespedes <fcespedes@nuobit.com>
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl) -->
+<odoo>
+    <record id="rma_repair_wizard_view_form" model="ir.ui.view">
+        <field name="name">RMA Repair Wizard</field>
+        <field name="model">rma.repair.wizard</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+             <form string="Create Repair Order">
+                 <group>
+                     <field name="rma_id" options="{'no_open': true}" />
+                     <field name="partner_id" />
+                     <field name="product_id" />
+                     <field
+                        name="product_qty"
+                        attrs="{'invisible': [('has_lots', '!=', False)]}"
+                    />
+                     <field
+                        name="lot_ids"
+                        widget="many2many_tags"
+                        attrs="{'invisible': [('has_lots', '=', False)]}"
+                    />
+                     <field name="has_lots" invisible="1" />
+                 </group>
+                 <newline />
+                 <footer>
+                     <button
+                        name="action_create_repair_order"
+                        string="Create Repair Orders"
+                        type="object"
+                        class="oe_highlight"
+                    />
+                     <button
+                        name="action_create_repair_order_and_block_rma"
+                        string="Create Repair Orders and Block RMA"
+                        type="object"
+                        class="oe_highlight"
+                    />
+                     <button special="cancel" string="Cancel" class="oe_link" />
+                 </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="rma_action_repair" model="ir.actions.act_window">
+        <field name="name">Create Repair Order</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">rma.repair.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+</odoo>
