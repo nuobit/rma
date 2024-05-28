@@ -280,6 +280,18 @@ class Rma(models.Model):
         readonly=True,
         copy=False,
     )
+    lot_ids = fields.Many2many(
+        comodel_name="stock.production.lot",
+        compute="_compute_lot_ids",
+        store=True,
+        readonly=True,
+        copy=False,
+    )
+
+    @api.depends("reception_move_id.picking_id.move_line_ids.lot_id")
+    def _compute_lot_ids(self):
+        for rec in self:
+            rec.lot_ids = rec.reception_move_id.picking_id.move_line_ids.lot_id
 
     def _compute_delivery_picking_count(self):
         # It is enough to count the moves to know how many pickings
