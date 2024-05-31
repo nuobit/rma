@@ -85,7 +85,7 @@ class RmaRepairWizard(models.TransientModel):
 
     def _prepare_repair_order(self, lot_id=None):
         self.ensure_one()
-        return {
+        vals = {
             "rma_id": self.rma_id.id,
             "product_id": self.product_id.id,
             "partner_id": self.partner_id.id,
@@ -95,6 +95,9 @@ class RmaRepairWizard(models.TransientModel):
             "location_id": self.rma_id.location_id.id,
             "lot_id": lot_id,
         }
+        if self.rma_id.user_id:
+            vals["user_id"] = self.rma_id.user_id.id
+        return vals
 
     def action_create_repair_order(self):
         self.ensure_one()
