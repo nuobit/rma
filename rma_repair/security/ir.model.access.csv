@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_rma_repair_wizard_manager,rma.repair.wizard.manager,model_rma_repair_wizard,rma.rma_group_manager,1,1,1,1
+access_rma_repair_wizard_user_all,rma.repair.wizard.user.all,model_rma_repair_wizard,rma.rma_group_user_all,1,1,1,1
+access_rma_repair_line_wizard_manager,rma.repair.line.wizard.manager,model_rma_repair_line_wizard,rma.rma_group_manager,1,1,1,1
+access_rma_repair_line_wizard_user_all,rma.repair.line.wizard.user.all,model_rma_repair_line_wizard,rma.rma_group_user_all,1,1,1,1

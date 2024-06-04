@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright NuoBiT - Frank Cespedes <fcespedes@nuobit.com>
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl) -->
+<odoo>
+    <record id="rma_view_form" model="ir.ui.view">
+        <field name="name">rma.view.form</field>
+        <field name="model">rma</field>
+        <field name="inherit_id" ref="rma.rma_view_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='action_return']" position="after">
+                <field name="can_create_repair_order" invisible="1" />
+                <button
+                    name="%(rma_action_repair)d"
+                    string="Create Repair Order"
+                    type="action"
+                    attrs="{'invisible': [('can_create_repair_order', '=', False)]}"
+                />
+            </xpath>
+            <div name="button_box" position="inside">
+                <field name="repair_order_ids" invisible="1" />
+                <button
+                    type="object"
+                    name="action_view_repair_order"
+                    class="oe_stat_button"
+                    icon="fa-wrench"
+                    attrs="{'invisible': [('repair_order_ids', '=', [])]}"
+                >
+                    <field
+                        name="repair_count"
+                        widget="statinfo"
+                        string="Repair Orders"
+                    />
+                </button>
+            </div>
+        </field>
+    </record>
+</odoo>
