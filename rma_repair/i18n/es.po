@@ -6,14 +6,24 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 14.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-28 13:23+0000\n"
-"PO-Revision-Date: 2024-05-28 13:23+0000\n"
+"POT-Creation-Date: 2024-06-04 14:06+0000\n"
+"PO-Revision-Date: 2024-06-04 14:06+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
+
+#. module: rma_repair
+#: model:ir.model.fields.selection,name:rma_repair.selection__rma_repair_line_wizard__invoice_method__after_repair
+msgid "After Repair"
+msgstr "Después de Reparar"
+
+#. module: rma_repair
+#: model:ir.model.fields.selection,name:rma_repair.selection__rma_repair_line_wizard__invoice_method__b4repair
+msgid "Before Repair"
+msgstr "Antes de Reparar"
 
 #. module: rma_repair
 #: model:ir.model.fields,field_description:rma_repair.field_rma__can_create_repair_order
@@ -43,11 +53,13 @@ msgid "Create Repair Orders and Block RMA"
 msgstr "Crear órdenes de reparación y bloquear RMA"
 
 #. module: rma_repair
+#: model:ir.model.fields,field_description:rma_repair.field_rma_repair_line_wizard__create_uid
 #: model:ir.model.fields,field_description:rma_repair.field_rma_repair_wizard__create_uid
 msgid "Created by"
 msgstr "Creado por"
 
 #. module: rma_repair
+#: model:ir.model.fields,field_description:rma_repair.field_rma_repair_line_wizard__create_date
 #: model:ir.model.fields,field_description:rma_repair.field_rma_repair_wizard__create_date
 msgid "Created on"
 msgstr "Creado el"
@@ -55,6 +67,7 @@ msgstr "Creado el"
 #. module: rma_repair
 #: model:ir.model.fields,field_description:rma_repair.field_repair_order__display_name
 #: model:ir.model.fields,field_description:rma_repair.field_rma__display_name
+#: model:ir.model.fields,field_description:rma_repair.field_rma_repair_line_wizard__display_name
 #: model:ir.model.fields,field_description:rma_repair.field_rma_repair_wizard__display_name
 msgid "Display Name"
 msgstr "Nombre mostrado"
@@ -65,26 +78,44 @@ msgid "Has Lots"
 msgstr "Tiene lotes"
 
 #. module: rma_repair
+#: model:ir.model.fields,field_description:rma_repair.field_rma_repair_line_wizard__invoice_method
+msgid "Invoice Method"
+msgstr "Método de Facturación"
+
+#. module: rma_repair
 #: model:ir.model.fields,field_description:rma_repair.field_repair_order____last_update
 #: model:ir.model.fields,field_description:rma_repair.field_rma____last_update
+#: model:ir.model.fields,field_description:rma_repair.field_rma_repair_line_wizard____last_update
 #: model:ir.model.fields,field_description:rma_repair.field_rma_repair_wizard____last_update
 msgid "Last Modified on"
 msgstr "Última modificación el"
 
 #. module: rma_repair
+#: model:ir.model.fields,field_description:rma_repair.field_rma_repair_line_wizard__write_uid
 #: model:ir.model.fields,field_description:rma_repair.field_rma_repair_wizard__write_uid
 msgid "Last Updated by"
 msgstr "Última actualización por"
 
 #. module: rma_repair
+#: model:ir.model.fields,field_description:rma_repair.field_rma_repair_line_wizard__write_date
 #: model:ir.model.fields,field_description:rma_repair.field_rma_repair_wizard__write_date
 msgid "Last Updated on"
 msgstr "Última actualización el"
 
 #. module: rma_repair
-#: model:ir.model.fields,field_description:rma_repair.field_rma_repair_wizard__lot_ids
+#: model:ir.model.fields,field_description:rma_repair.field_rma_repair_wizard__line_ids
+msgid "Line"
+msgstr "Línea"
+
+#. module: rma_repair
+#: model:ir.model.fields,field_description:rma_repair.field_rma_repair_line_wizard__lot_ids
 msgid "Lot"
 msgstr "Lote"
+
+#. module: rma_repair
+#: model:ir.model.fields.selection,name:rma_repair.selection__rma_repair_line_wizard__invoice_method__none
+msgid "No Invoice"
+msgstr "Sin factura"
 
 #. module: rma_repair
 #: model:ir.model.fields,field_description:rma_repair.field_rma_repair_wizard__partner_id
@@ -92,6 +123,7 @@ msgid "Partner"
 msgstr "Cliente"
 
 #. module: rma_repair
+#: model:ir.model.fields,field_description:rma_repair.field_rma_repair_line_wizard__product_id
 #: model:ir.model.fields,field_description:rma_repair.field_rma_repair_wizard__product_id
 msgid "Product"
 msgstr "Producto"
@@ -108,9 +140,14 @@ msgid "Quantity must be positive."
 msgstr "La cantidad debe ser positiva."
 
 #. module: rma_repair
-#: model:ir.model.fields,field_description:rma_repair.field_rma_repair_wizard__product_qty
+#: model:ir.model.fields,field_description:rma_repair.field_rma_repair_line_wizard__product_qty
 msgid "Quantity to repair"
 msgstr "Cantidad a reparar"
+
+#. module: rma_repair
+#: model:ir.model,name:rma_repair.model_rma_repair_line_wizard
+msgid "RMA Repair Line Wizard"
+msgstr "RMA Asistente de Línea de Reparación"
 
 #. module: rma_repair
 #: model:ir.model,name:rma_repair.model_rma_repair_wizard
@@ -136,6 +173,18 @@ msgid "Repair Orders"
 msgstr "Órdenes de reparación"
 
 #. module: rma_repair
+#: model:ir.model.fields,help:rma_repair.field_rma_repair_line_wizard__invoice_method
+msgid ""
+"Selecting 'Before Repair' or 'After Repair' will allow you to generate "
+"invoice before or after the repair is done respectively. 'No invoice' means "
+"you don't want to generate invoice for this repair order."
+msgstr ""
+"Seleccionando 'Antes de reparar' o 'Después de reparar' permitirá generar "
+"las facturas antes o después de que se realice la reparación "
+"respectivamente. 'Sin factura' significa que no quiere generar factura para "
+"esta orden de reparación."
+
+#. module: rma_repair
 #: code:addons/rma_repair/wizards/rma_repair_wizard.py:0
 #, python-format
 msgid "The expected model for this action is 'rma', not '%s'."
@@ -148,6 +197,11 @@ msgid ""
 "Total quantity to repair must be less than or equal to the RMA quantity."
 msgstr ""
 "La cantidad total a reparar debe ser menor o igual a la cantidad de RMA."
+
+#. module: rma_repair
+#: model:ir.model.fields,field_description:rma_repair.field_rma_repair_line_wizard__wizard_id
+msgid "Wizard"
+msgstr "Asistente"
 
 #. module: rma_repair
 #: code:addons/rma_repair/wizards/rma_repair_wizard.py:0

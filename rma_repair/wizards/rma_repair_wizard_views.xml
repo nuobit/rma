@@ -11,18 +11,24 @@
                  <group>
                      <field name="rma_id" options="{'no_open': true}" />
                      <field name="partner_id" />
-                     <field name="product_id" />
-                     <field
-                        name="product_qty"
-                        attrs="{'invisible': [('has_lots', '!=', False)]}"
-                    />
-                     <field
-                        name="lot_ids"
-                        widget="many2many_tags"
-                        attrs="{'invisible': [('has_lots', '=', False)]}"
-                    />
                      <field name="has_lots" invisible="1" />
                  </group>
+                 <field name="line_ids" nolabel="1">
+                     <tree editable="bottom">
+                         <field name="product_id" />
+                         <field
+                            name="product_qty"
+                            attrs="{'column_invisible': [('parent.has_lots', '=', True)], 'required': [('parent.has_lots', '=', False)]}"
+                        />
+                         <field
+                            name="lot_ids"
+                            widget="many2many_tags"
+                            attrs="{'column_invisible': [('parent.has_lots', '=', False)], 'required': [('parent.has_lots', '=', True)]}"
+                            options="{'no_create_edit': True, 'no_quick_create': True}"
+                        />
+                         <field name="invoice_method" />
+                     </tree>
+                 </field>
                  <newline />
                  <footer>
                      <button
